@@ -12,7 +12,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './navigators/AppNavigators'
 function App() {
-
+  
   
   return (
 <NavigationContainer>

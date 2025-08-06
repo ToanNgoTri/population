@@ -1,7 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Population} from '../screen/population';
-// import {Crime} from '../screen/crime';
 import {Crime} from '../screen/crime';
 import {GetOneFamily} from '../screen/getOneFamily';
 import { Text } from 'react-native';
