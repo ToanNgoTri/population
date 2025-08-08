@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Text,
   TextInput,
@@ -9,7 +9,8 @@ import {
   Image,
 } from 'react-native';
 import crime from '../asset/crime.json';
-import {useNavigation, useScrollToTop} from '@react-navigation/native';
+import { useNavigation, useScrollToTop } from '@react-navigation/native';
+import { Table, Row, Rows } from 'react-native-table-component';
 import RNFS from 'react-native-fs';
 
 export function Crime() {
@@ -32,26 +33,75 @@ export function Crime() {
 
   let data;
   useEffect(() => {
-    RNFS.exists(`${externalDirectoryPath}/crime.json`).then(fileExist => {
-      console.log('fileExist', fileExist);
+    // RNFS.exists(`${externalDirectoryPath}/crime.json`).then(fileExist => {
+    //   console.log('fileExist', fileExist);
 
-      if (fileExist) {
-        RNFS.readFile(`${externalDirectoryPath}/crime.json`).then(
-          dataExternal => {
-            data = JSON.parse(dataExternal);
-            // console.log('data', (data[0]));
-          },
-        );
-      } else {
-        data = crime;
-      }
-
-      // console.log('data',data)
-    });
+    //   if (fileExist) {
+    //     RNFS.readFile(`${externalDirectoryPath}/crime.json`).then(
+    //       dataExternal => {
+    //         data = JSON.parse(dataExternal);
+    //         // console.log('data', (data[0]));
+    //       },
+    //     );
+    //   } else {
+    data = crime;
+    //   }
+    // });
   });
 
-  function Item({item, index}) {
-    // console.log(item);
+  let tableHead = [
+    'STT',
+    'Tội danh',
+    'Thời hạn',
+    'Ngày bắt',
+    'Ngày CH xong:',
+    'Nơi CH',
+  ];
+  let widthArr = ['8%', '30%', '15%', '15%', '15%', '17%'];
+  //  let tableData= [
+  //     ['1', '2', '3', '4'],
+  //     ['a', 'b', 'c', 'd'],
+  //     ['1', '2', '3', '456\n789'],
+  //     ['a', 'b', 'c', 'd']
+  //   ]
+
+  function Item({ item, index }) {
+    // console.log(item['CHARGE'].split(";"));
+
+    let chargeArr = item['CHARGE'].split(';');
+    let fullInfoCrime = [];
+    // console.log('chargeArr', chargeArr);
+
+    for (let a = 0; a < chargeArr.length; a++) {
+      // console.log("item['CHARGE'].split()[a]", item['FREEDAY'].split(';')[a]);
+
+      fullInfoCrime.push([
+        [a + 1],
+        item['CHARGE'].split(';')[a] ? item['CHARGE'].split(';')[a] : "",
+        item['JUDGMENT'].split(';')[a] ? item['JUDGMENT'].split(';')[a] : "",
+        item['DAYARRES'].split(';')[a] ? item['DAYARRES'].split(';')[a] : "",
+        item['FREEDAY'].split(';')[a] ? item['FREEDAY'].split(';')[a] : "",
+        item['DETENTION'].split(';')[a] ? item['DETENTION'].split(';')[a] : "",
+      ]);
+      // console.log('fullInfoCrime1', fullInfoCrime);
+    }
+
+    // let URIImage = ''
+    // let existsIMG;
+    // RNFS.exists(
+    //         `file://${externalDirectoryPath}/${item['CCCD']}.jpg`,
+    //       ).then(exists => {
+    //         console.log('exists', exists);
+    //         if(exists){
+    //           existsIMG = exists
+    //           URIImage = `file://${externalDirectoryPath}/${item['CCCD']}.jpg`
+    //         }else{
+    //           existsIMG = exists
+    //         }
+    //         console.log('existsIMG',existsIMG);
+            
+    //       })
+
 
     return (
       <View
@@ -65,33 +115,38 @@ export function Crime() {
           borderColor: 'black',
           borderRadius: 5,
           justifyContent: 'space-between',
-        }}>
-        <View style={{flexDirection: 'row'}}>
-          <Text>STT: {index}</Text>
+        }}
+      >
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={{fontWeight:'bold'}}>Số thứ tự: <Text style={{fontWeight:'400'}}>{index}</Text></Text>
         </View>
         <View
           style={{
             flexDirection: 'row',
             width: '100%',
             justifyContent: 'space-between',
-          }}>
-          <View style={{width: '50%'}}>
-            <Text style={{marginRight: 10}}>
+            marginBottom: 10,
+          }}
+        >
+          <View style={{ flex: 1 }}>
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>
               Họ và tên:{' '}
-              <Text style={{fontWeight: 'bold'}}>{item['HOTEN']}</Text>
+              <Text style={{ color:'red' }}>{item['HOTEN']}</Text>
             </Text>
-            <Text style={{marginRight: 10}}>Tên khác: {item['TENKHAC']}</Text>
-            <Text style={{marginRight: 10}}>Ngày sinh: {item['NAMSINH']}</Text>
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Tên khác: <Text style={{fontWeight:'400'}}>{item['TENKHAC']}</Text></Text>
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>
+              Ngày sinh: <Text style={{fontWeight:'400'}}>{item['NAMSINH']}</Text>
+            </Text>
 
-            <Text style={{marginRight: 10}}>
-              Giới tính: {item['GIOITINH'] == 'TRUE' ? 'Nam' : 'Nữ'}
+            <Text style={{ marginRight: 10}}>
+              Giới tính: <Text style={{fontWeight:'400'}}>{item['GIOITINH'] == 'TRUE' ? 'Nam' : 'Nữ'}</Text>
             </Text>
-            <Text style={{marginRight: 10}}>Số ĐDCN: {item['CCCD']}</Text>
-            <Text style={{marginRight: 10}}>Tên cha: {item['TENCHA']}</Text>
-            <Text style={{marginRight: 10}}>Tên mẹ: {item['TENME']}</Text>
-            <Text style={{marginRight: 10}}>Dân tộc: {item['DANTOC']}</Text>
-            <Text style={{marginRight: 10}}>Tôn giáo: {item['TONGIAO']}</Text>
-            <Text style={{marginRight: 10}}>Tội danh: {item['CHARGE']}</Text>
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Số ĐDCN: <Text style={{fontWeight:'400'}}>{item['CCCD']}</Text></Text>
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Tên cha: <Text style={{fontWeight:'400'}}>{item['TENCHA']}</Text></Text>
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Tên mẹ: <Text style={{fontWeight:'400'}}>{item['TENME']}</Text></Text>
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Dân tộc: <Text style={{fontWeight:'400'}}>{item['DANTOC']}</Text></Text>
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Tôn giáo: <Text style={{fontWeight:'400'}}>{item['TONGIAO']}</Text></Text>
+            {/* <Text style={{marginRight: 10}}>Tội danh: {item['CHARGE']}</Text>
             <Text style={{marginRight: 10}}>Ngày bắt: {item['DAYARRES']}</Text>
             <Text style={{marginRight: 10}}>
               Ngày chấp hành xong: {item['FREEDAY']}
@@ -99,22 +154,94 @@ export function Crime() {
             <Text style={{marginRight: 10}}>Thời hạn: {item['JUDGMENT']}</Text>
             <Text style={{marginRight: 10}}>
               Nơi chấp hành: {item['DETENTION']}
-            </Text>
-            <Text style={{marginRight: 10}}>Địa chỉ: {item['TODPHO']}</Text>
+            </Text> */}
+            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Địa chỉ: <Text style={{fontWeight:'400'}}>{item['TODPHO']}</Text></Text>
           </View>
-          <View
-            style={{
-              width: '50%',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Image
-              style={{width: '100%', height: 200}}
-              source={{
-                uri: `file://${externalDirectoryPath}/${item['CCCD']}.jpg`,
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    // backgroundColor: 'yellow',
+                  }}
+                >
+                  <Image
+                    style={{ width: '100%', height: 200 }}
+                    source={{
+                      uri: `file://${externalDirectoryPath}/${item['CCCD']}.jpg`,
+                    }}
+                  />
+                </View>
+
+          {/* {existsIMG && 
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    // backgroundColor: 'yellow',
+                  }}
+                >
+                  <Image
+                    style={{ width: '100%', height: 200 }}
+                    source={{
+                      uri: `file://${externalDirectoryPath}/${item['CCCD']}.jpg`,
+                    }}
+                  />
+                </View>
+              
+           } */}
+
+        </View>
+        <View>
+          {/* <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+            <Row
+              data={tableHead}
+              style={{ backgroundColor: '#f1f8ff' }}
+              textStyle={{ margin: 6, fontWeight: 'bold',textAlign:'center'}}
+            />
+            <Rows
+            
+              data={fullInfoCrime}
+              style={{ backgroundColor: '#f1f8ff' }}
+              textStyle={{ margin: 4, fontSize: 10,textAlign:'center' }}
+            />
+          </Table> */}
+
+          <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+            <Row
+              data={tableHead}
+              widthArr={widthArr}
+              style={{ backgroundColor: '#f1f8ff' }}
+              textStyle={{
+                margin: 6,
+                fontWeight: 'bold',
+                textAlign: 'center',
+                fontSize: 12,
               }}
             />
-          </View>
+          </Table>
+          <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
+            {fullInfoCrime.map((rowData, index) => {
+              // console.log('rowData[1]', rowData[1]);
+              // console.log('rowData[4]', rowData[4]);
+
+              return (
+                <Row
+                  key={index}
+                  data={rowData}
+                  widthArr={widthArr}
+                  style={
+                    rowData &&
+                    (rowData[1].includes('?') || rowData[4].includes('?'))
+                      ? { backgroundColor: 'red' }
+                      : { backgroundColor: '#f1f8ff' }
+                  }
+                  textStyle={{ margin: 4, fontSize: 10, textAlign: 'center' }}
+                />
+              );
+            })}
+          </Table>
         </View>
       </View>
     );
@@ -122,7 +249,7 @@ export function Crime() {
 
   function pushToSearch() {
     Keyboard.dismiss();
-    // let data = crime;
+    let data = crime;
     let dataDemoSearch = [];
     for (let a = 0; a <= data.length; a++) {
       if (
@@ -132,13 +259,10 @@ export function Crime() {
           data[a]['TENKHAC'].match(new RegExp(input2, 'img')))
       ) {
         dataDemoSearch.push(data[a]);
-        // console.log(data[a]['HOTEN']);
       }
     }
 
     setSearchRearch(dataDemoSearch);
-
-    // console.log(dataOrg[0]);
   }
 
   return (
@@ -151,7 +275,8 @@ export function Crime() {
           borderBottomWidth: 1,
           borderBottomColor: 'black',
           paddingTop: 30,
-        }}>
+        }}
+      >
         <View
           style={{
             marginTop: 10,
@@ -160,12 +285,14 @@ export function Crime() {
             borderRadius: 10,
             flexDirection: 'row',
             justifyContent: 'space-between',
-          }}>
+          }}
+        >
           <View
             style={{
               flexDirection: 'column',
               width: '80%',
-            }}>
+            }}
+          >
             <TextInput
               style={{
                 backgroundColor: 'black',
@@ -180,7 +307,8 @@ export function Crime() {
               onChangeText={text => setInput(text)}
               placeholder="Nhập từ khóa..."
               placeholderTextColor={'white'}
-              onSubmitEditing={() => pushToSearch()}></TextInput>
+              onSubmitEditing={() => pushToSearch()}
+            ></TextInput>
             <TextInput
               style={{
                 backgroundColor: 'black',
@@ -196,13 +324,15 @@ export function Crime() {
               onChangeText={text => setInput2(text)}
               placeholder="Nhập từ khóa..."
               placeholderTextColor={'white'}
-              onSubmitEditing={() => pushToSearch()}></TextInput>
+              onSubmitEditing={() => pushToSearch()}
+            ></TextInput>
           </View>
           <View
             style={{
               alignItems: 'center',
               justifyContent: 'center',
-            }}>
+            }}
+          >
             <TouchableOpacity
               style={{
                 padding: 5,
@@ -215,13 +345,15 @@ export function Crime() {
               onPress={() => {
                 setInput('');
                 setInput2('');
-              }}>
+              }}
+            >
               <Text
                 style={{
                   textAlign: 'center',
-                  color:'white',
-                  fontWeight:'bold'
-                }}>
+                  color: 'white',
+                  fontWeight: 'bold',
+                }}
+              >
                 X
               </Text>
             </TouchableOpacity>
@@ -239,15 +371,16 @@ export function Crime() {
             borderColor: 'black',
             borderWidth: 2,
             color: 'black',
-          }}>
-          <Text style={{color: 'white', fontWeight: 'bold'}}>Search</Text>
+          }}
+        >
+          <Text style={{ color: 'white', fontWeight: 'bold' }}>Search</Text>
         </TouchableOpacity>
-        <Text style={{paddingTop: 5, marginBottom: 5}}>
+        <Text style={{ paddingTop: 5, marginBottom: 5 }}>
           Số lượng kết quả tìm thấy:
-          <Text style={{fontWeight: 'bold'}}> {searchRearch.length}</Text>
+          <Text style={{ fontWeight: 'bold' }}> {searchRearch.length}</Text>
         </Text>
       </View>
-      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 204}}>
+      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 204 }}>
         <FlatList
           ref={FlatListToScroll}
           data={searchRearch}

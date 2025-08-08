@@ -18,7 +18,8 @@
     "react-native": "0.80.2",
     "react-native-fs": "^2.20.0",
     "react-native-safe-area-context": "^5.5.2",
-    "react-native-screens": "^4.13.1"
+    "react-native-screens": "^4.13.1",
+    "react-native-table-component": "^1.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

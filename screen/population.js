@@ -26,7 +26,7 @@ export function Population() {
   let data;
   useEffect(() => {
     RNFS.exists(`${externalDirectoryPath}/population.json`).then(fileExist => {
-      console.log('fileExist', fileExist);
+      // console.log('fileExist', fileExist);
 
       if (fileExist) {
         RNFS.readFile(`${externalDirectoryPath}/population.json`).then(
@@ -39,7 +39,6 @@ export function Population() {
       }
     });
   });
-  console.log('data1', data);
 
   function Item({item, index}) {
     return (
