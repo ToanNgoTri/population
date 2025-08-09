@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect,useContext} from 'react';
 import {
   Text,
   TextInput,
@@ -10,6 +10,7 @@ import {
 import population from '../asset/population.json';
 import {useNavigation, useScrollToTop} from '@react-navigation/native';
 import RNFS from 'react-native-fs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export function Population() {
   const [input, setInput] = useState('');
@@ -18,27 +19,33 @@ export function Population() {
   const [searchRearch, setSearchRearch] = useState([]);
   const navigation = useNavigation();
 
-  const FlatListToScroll = useRef(null);
+  // const FlatListToScroll = useRef(null);
 
-  useScrollToTop(FlatListToScroll);
+  // useScrollToTop(FlatListToScroll);
   const externalDirectoryPath = `${RNFS.ExternalDirectoryPath}`;
+  const insets = useSafeAreaInsets(); // lất chiều cao để manu top iphone
 
-  let data;
+    // const HomeScreen = useContext(RefOfHome);
+
+  let data = population;
   useEffect(() => {
-    RNFS.exists(`${externalDirectoryPath}/population.json`).then(fileExist => {
-      // console.log('fileExist', fileExist);
+    // RNFS.exists(`${externalDirectoryPath}/population.json`).then(fileExist => {
+    //   if (fileExist) {
+    //     RNFS.readFile(`${externalDirectoryPath}/population.json`).then(
+    //       dataExternal => {
+    //         data = JSON.parse(dataExternal);
+    //       },
+    //     );
+    //   } else {
+    //     data = population;
+    //   }
+    // });
 
-      if (fileExist) {
-        RNFS.readFile(`${externalDirectoryPath}/population.json`).then(
-          dataExternal => {
-            data = JSON.parse(dataExternal);
-          },
-        );
-      } else {
-        data = population;
-      }
-    });
-  });
+    //     if (ScrollViewToScroll.current) {
+    //   HomeScreen.updateHomeRef(ScrollViewToScroll.current);
+    // }
+
+  },[]);
 
   function Item({item, index}) {
     return (
@@ -112,7 +119,7 @@ export function Population() {
           borderBottomWidth: 1,
           borderBottomColor: 'color',
           backgroundColor: '#FFFF66',
-          paddingTop: 30,
+          paddingTop:30 + insets.top/2,
         }}>
         <View
           style={{
@@ -137,6 +144,8 @@ export function Population() {
                 paddingLeft: 10,
                 borderColor: 'black',
                 borderWidth: 2,
+                paddingTop:5,
+                paddingBottom:5
               }}
               value={input}
               selectTextOnFocus={true}
@@ -152,7 +161,9 @@ export function Population() {
                 borderColor: 'black',
                 borderWidth: 2,
                 marginTop: 5,
-              }}
+                paddingTop:5,
+                paddingBottom:5
+}}
               value={input2}
               selectTextOnFocus={true}
               onChangeText={text => setInput2(text)}
@@ -208,9 +219,11 @@ export function Population() {
           <Text style={{fontWeight: 'bold'}}> {searchRearch.length}</Text>
         </Text>
       </View>
-      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 204}}>
+      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 204 + 4}}>
         <FlatList
-          ref={FlatListToScroll}
+          // ref={()=>{FlatListToScroll}}
+          ref={(ref)=>{global.SearchPopulationRef = ref}}
+
           data={searchRearch}
           renderItem={(item, index) => (
             <Item item={item.item} index={item.index + 1} />

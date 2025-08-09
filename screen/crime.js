@@ -12,6 +12,7 @@ import crime from '../asset/crime.json';
 import { useNavigation, useScrollToTop } from '@react-navigation/native';
 import { Table, Row, Rows } from 'react-native-table-component';
 import RNFS from 'react-native-fs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export function Crime() {
   // let data = crime;
@@ -27,11 +28,12 @@ export function Crime() {
   const [searchRearch, setSearchRearch] = useState([]);
   const navigation = useNavigation();
 
-  const FlatListToScroll = useRef(null);
+  // const FlatListToScroll = useRef(null);
 
-  useScrollToTop(FlatListToScroll);
+  // useScrollToTop(FlatListToScroll);
+  const insets = useSafeAreaInsets(); // lất chiều cao để manu top iphone
 
-  let data;
+  let data = crime;
   useEffect(() => {
     // RNFS.exists(`${externalDirectoryPath}/crime.json`).then(fileExist => {
     //   console.log('fileExist', fileExist);
@@ -44,10 +46,12 @@ export function Crime() {
     //       },
     //     );
     //   } else {
-    data = crime;
+    // data = crime;
     //   }
     // });
-  });
+
+
+  },[]);
 
   let tableHead = [
     'STT',
@@ -274,7 +278,7 @@ export function Crime() {
           backgroundColor: '#0099FF',
           borderBottomWidth: 1,
           borderBottomColor: 'black',
-          paddingTop: 30,
+          paddingTop:30 + insets.top/2,
         }}
       >
         <View
@@ -301,6 +305,9 @@ export function Crime() {
                 borderColor: 'black',
                 color: 'white',
                 borderWidth: 2,
+                paddingTop:5,
+                paddingBottom:5
+
               }}
               value={input}
               selectTextOnFocus={true}
@@ -318,6 +325,9 @@ export function Crime() {
                 color: 'white',
                 borderWidth: 2,
                 marginTop: 5,
+                paddingTop:5,
+                paddingBottom:5
+
               }}
               value={input2}
               selectTextOnFocus={true}
@@ -380,9 +390,9 @@ export function Crime() {
           <Text style={{ fontWeight: 'bold' }}> {searchRearch.length}</Text>
         </Text>
       </View>
-      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 204 }}>
+      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 204 + 4 }}>
         <FlatList
-          ref={FlatListToScroll}
+          ref={(ref)=>{global.SearchCrimeRef = ref}}
           data={searchRearch}
           renderItem={(item, index) => (
             <Item item={item.item} index={item.index + 1} />
