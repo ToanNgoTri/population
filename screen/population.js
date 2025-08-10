@@ -119,7 +119,7 @@ export function Population() {
           borderBottomWidth: 1,
           borderBottomColor: 'color',
           backgroundColor: '#FFFF66',
-          paddingTop:30 + insets.top/2,
+          paddingTop:20 + insets.top/2,
           height:190 + insets.top/2
         }}>
         <View
