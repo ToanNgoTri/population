@@ -119,8 +119,8 @@ export function Population() {
           borderBottomWidth: 1,
           borderBottomColor: 'color',
           backgroundColor: '#FFFF66',
-          paddingTop:20 + insets.top,
-          height:190 + insets.top
+          paddingTop:20 + insets.top/2,
+          height:190 + insets.top/2
         }}>
         <View
           style={{
@@ -223,7 +223,8 @@ export function Population() {
         </Text>
       </View>
       <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 190 + insets.top/2 }}>
-        <FlatList
+      { searchRearch.length?
+      (<FlatList
           // ref={()=>{FlatListToScroll}}
           ref={(ref)=>{global.SearchPopulationRef = ref}}
 
@@ -232,8 +233,20 @@ export function Population() {
             <Item item={item.item} index={item.index + 1} />
           )}
         />
-      </View>
+   ):
+    (<TouchableOpacity
+    style={{
+      height:'100%',
+      width:'100%',
+      // backgroundColor:'red'
+    }}
+        onPress={() => Keyboard.dismiss()}
+    >
+    </TouchableOpacity>)
+    }
+          </View>
       <Text></Text>
-    </>
+
+       </>  
   );
 }

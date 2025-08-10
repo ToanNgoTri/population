@@ -297,8 +297,8 @@ export function Crime() {
           backgroundColor: '#0099FF',
           borderBottomWidth: 1,
           borderBottomColor: 'black',
-          paddingTop: 30 + insets.top / 2,
-          height: 190 + insets.top / 2,
+          paddingTop:20 + insets.top/2,
+          height:190 + insets.top/2
         }}
       >
         <View
@@ -416,7 +416,8 @@ export function Crime() {
           marginBottom: 190 + insets.top / 2,
         }}
       >
-        <FlatList
+        {
+          searchRearch.length ? (<FlatList
           ref={ref => {
             global.SearchCrimeRef = ref;
           }}
@@ -424,7 +425,18 @@ export function Crime() {
           renderItem={(item, index) => (
             <Item item={item.item} index={item.index + 1} />
           )}
-        />
+        />):
+        (<TouchableOpacity
+            style={{
+              height:'100%',
+              width:'100%',
+              // backgroundColor:'red'
+            }}
+                onPress={() => Keyboard.dismiss()}
+            >
+            </TouchableOpacity>)
+        }
+        
       </View>
       <Text></Text>
     </>
