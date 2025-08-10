@@ -59,13 +59,6 @@ export function Crime() {
     'Nơi CH',
   ];
   let widthArr = ['8%', '30%', '15%', '15%', '15%', '17%'];
-  //  let tableData= [
-  //     ['1', '2', '3', '4'],
-  //     ['a', 'b', 'c', 'd'],
-  //     ['1', '2', '3', '456\n789'],
-  //     ['a', 'b', 'c', 'd']
-  //   ]
-
   function Item({ item, index }) {
     // console.log(item['CHARGE'].split(";"));
 
@@ -294,7 +287,7 @@ export function Crime() {
         style={{
           alignItems: 'center',
           marginBottom: 0,
-          backgroundColor: '#0099FF',
+          backgroundColor: '#006633',
           borderBottomWidth: 1,
           borderBottomColor: 'black',
           paddingTop:20 + insets.top/2,

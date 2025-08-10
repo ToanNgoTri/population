@@ -23,13 +23,12 @@ export function AppNavigators() {
         tabBarIconStyle: { display: 'none' },
       }}
       tabBar={({ navigation, state }) => {
-        
         return (
           <View
             style={{
               backgroundColor: '#FFCCCC',
               bottom: 0,
-              height: 40 + insets.bottom / 2,
+              height: 45 + insets.bottom / 2,
               width: '100%',
               flexDirection: 'row',
             }}
@@ -40,9 +39,8 @@ export function AppNavigators() {
                 // backgroundColor: 'yellow',
                 textAlign: 'center',
                 alignItems: 'center',
-                borderRightWidth: .5,
-                borderRightColor:'gray'
-                
+                borderRightWidth: 0.5,
+                borderRightColor: 'gray',
               }}
             >
               <TouchableOpacity
@@ -57,22 +55,20 @@ export function AppNavigators() {
                 }}
                 onPress={() => {
                   navigation.navigate('Tìm công dân');
-                  if(
-            state.index == 0 &&
-            global.SearchPopulationRef){
-              global.SearchPopulationRef.scrollToOffset({ offset: 0 });}}
-              
-            }
+                  if (state.index == 0 && global.SearchPopulationRef) {
+                    global.SearchPopulationRef.scrollToOffset({ offset: 0 });
+                  }
+                }}
               >
                 <Text
                   style={{
                     width: '100%',
                     justifyContent: 'center',
                     textAlign: 'center',
-                    bottom: insets.bottom / 4,
-                    color: state.index == 0 ? 'green' : 'black',
-                    fontSize:18,
-                    fontWeight:'bold'
+                    bottom: insets.bottom / 4 + 2,
+                    color: state.index == 0 ? '#006600' : '#808080',
+                    fontSize: 18,
+                    fontWeight: 'bold',
                   }}
                 >
                   Tìm công dân
@@ -99,12 +95,9 @@ export function AppNavigators() {
                 }}
                 onPress={() => {
                   navigation.navigate('Tìm đối tượng');
-                                    if(
-            state.index == 1 &&
-            global.SearchCrimeRef){
-
-                global.SearchCrimeRef.scrollToOffset({ offset: 0 })
-            }
+                  if (state.index == 1 && global.SearchCrimeRef) {
+                    global.SearchCrimeRef.scrollToOffset({ offset: 0 });
+                  }
                 }}
               >
                 <Text
@@ -112,10 +105,10 @@ export function AppNavigators() {
                     width: '100%',
                     justifyContent: 'center',
                     textAlign: 'center',
-                    bottom: insets.bottom / 4,
-                    color: state.index == 1 ? 'green' : 'black',
-                    fontSize:18,
-                    fontWeight:'bold'
+                    bottom: insets.bottom / 4 + 2,
+                    color: state.index == 1 ? '#006600' : '#808080',
+                    fontSize: 18,
+                    fontWeight: 'bold',
                   }}
                 >
                   Tìm đối tượng

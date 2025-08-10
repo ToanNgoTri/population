@@ -117,9 +117,9 @@ export function Population() {
         style={{
           alignItems: 'center',
           marginBottom: 0,
+          backgroundColor: '#008080',
           borderBottomWidth: 1,
-          borderBottomColor: 'color',
-          backgroundColor: '#FFFF66',
+          borderBottomColor: 'black',
           paddingTop:20 + insets.top/2,
           height:190 + insets.top/2
         }}>
