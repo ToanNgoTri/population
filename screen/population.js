@@ -86,6 +86,7 @@ export function Population() {
           <Text style={{marginRight: 10}}>Tên mẹ: {item['TENME']}</Text>
           <Text style={{marginRight: 10}}>Dân tộc: {item['DANTOC']}</Text>
           <Text style={{marginRight: 10}}>Tôn giáo: {item['TONGIAO']}</Text>
+          <Text style={{marginRight: 10}}>Số ĐDCN: {item['CCCD']}</Text>
           <Text style={{marginRight: 10}}>Địa chỉ: {item['NOITHTRU']}</Text>
         </TouchableOpacity>
       </View>
