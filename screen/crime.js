@@ -397,7 +397,7 @@ export function Crime() {
         >
           <Text style={{ color: 'white', fontWeight: 'bold' }}>Search</Text>
         </TouchableOpacity>
-        <Text style={{ paddingTop: 5, marginBottom: 5 }}>
+        <Text style={{ paddingTop: 5, marginBottom: 5 ,color:'white'}}>
           Số lượng kết quả tìm thấy:
           <Text style={{ fontWeight: 'bold' }}> {searchRearch.length}</Text>
         </Text>
