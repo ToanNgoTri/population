@@ -219,7 +219,7 @@ export function Population() {
           <Text style={{fontWeight: 'bold'}}> {searchRearch.length}</Text>
         </Text>
       </View>
-      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 204 + 4}}>
+      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 180 + 4}}>
         <FlatList
           // ref={()=>{FlatListToScroll}}
           ref={(ref)=>{global.SearchPopulationRef = ref}}

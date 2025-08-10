@@ -130,7 +130,7 @@ export function GetOneFamily() {
             paddingLeft: 20,
             paddingRight: 20,
             marginBottom: 20,
-            paddingBottom:insets.bottom + insets.top/2
+            paddingBottom:insets.bottom + insets.top/2 + 60
             // marginTop: 10,
           }}
         >
