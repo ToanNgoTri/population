@@ -37,7 +37,6 @@ export function Crime() {
   useEffect(() => {
     // RNFS.exists(`${externalDirectoryPath}/crime.json`).then(fileExist => {
     //   console.log('fileExist', fileExist);
-
     //   if (fileExist) {
     //     RNFS.readFile(`${externalDirectoryPath}/crime.json`).then(
     //       dataExternal => {
@@ -49,9 +48,7 @@ export function Crime() {
     // data = crime;
     //   }
     // });
-
-
-  },[]);
+  }, []);
 
   let tableHead = [
     'STT',
@@ -81,11 +78,11 @@ export function Crime() {
 
       fullInfoCrime.push([
         [a + 1],
-        item['CHARGE'].split(';')[a] ? item['CHARGE'].split(';')[a] : "",
-        item['JUDGMENT'].split(';')[a] ? item['JUDGMENT'].split(';')[a] : "",
-        item['DAYARRES'].split(';')[a] ? item['DAYARRES'].split(';')[a] : "",
-        item['FREEDAY'].split(';')[a] ? item['FREEDAY'].split(';')[a] : "",
-        item['DETENTION'].split(';')[a] ? item['DETENTION'].split(';')[a] : "",
+        item['CHARGE'].split(';')[a] ? item['CHARGE'].split(';')[a] : '',
+        item['JUDGMENT'].split(';')[a] ? item['JUDGMENT'].split(';')[a] : '',
+        item['DAYARRES'].split(';')[a] ? item['DAYARRES'].split(';')[a] : '',
+        item['FREEDAY'].split(';')[a] ? item['FREEDAY'].split(';')[a] : '',
+        item['DETENTION'].split(';')[a] ? item['DETENTION'].split(';')[a] : '',
       ]);
       // console.log('fullInfoCrime1', fullInfoCrime);
     }
@@ -103,9 +100,8 @@ export function Crime() {
     //           existsIMG = exists
     //         }
     //         console.log('existsIMG',existsIMG);
-            
-    //       })
 
+    //       })
 
     return (
       <View
@@ -122,7 +118,9 @@ export function Crime() {
         }}
       >
         <View style={{ flexDirection: 'row' }}>
-          <Text style={{fontWeight:'bold'}}>Số thứ tự: <Text style={{fontWeight:'400'}}>{index}</Text></Text>
+          <Text style={{ fontWeight: 'bold' }}>
+            Số thứ tự: <Text style={{ fontWeight: '400' }}>{index}</Text>
+          </Text>
         </View>
         <View
           style={{
@@ -133,23 +131,42 @@ export function Crime() {
           }}
         >
           <View style={{ flex: 1 }}>
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>
-              Họ và tên:{' '}
-              <Text style={{ color:'red' }}>{item['HOTEN']}</Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Họ và tên: <Text style={{ color: 'red' }}>{item['HOTEN']}</Text>
             </Text>
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Tên khác: <Text style={{fontWeight:'400'}}>{item['TENKHAC']}</Text></Text>
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>
-              Ngày sinh: <Text style={{fontWeight:'400'}}>{item['NAMSINH']}</Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Tên khác:{' '}
+              <Text style={{ fontWeight: '400' }}>{item['TENKHAC']}</Text>
+            </Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Ngày sinh:{' '}
+              <Text style={{ fontWeight: '400' }}>{item['NAMSINH']}</Text>
             </Text>
 
-            <Text style={{ marginRight: 10}}>
-              Giới tính: <Text style={{fontWeight:'400'}}>{item['GIOITINH'] == 'TRUE' ? 'Nam' : 'Nữ'}</Text>
+            <Text style={{ marginRight: 10 }}>
+              Giới tính:{' '}
+              <Text style={{ fontWeight: '400' }}>
+                {item['GIOITINH'] == 'TRUE' ? 'Nam' : 'Nữ'}
+              </Text>
             </Text>
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Số ĐDCN: <Text style={{fontWeight:'400'}}>{item['CCCD']}</Text></Text>
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Tên cha: <Text style={{fontWeight:'400'}}>{item['TENCHA']}</Text></Text>
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Tên mẹ: <Text style={{fontWeight:'400'}}>{item['TENME']}</Text></Text>
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Dân tộc: <Text style={{fontWeight:'400'}}>{item['DANTOC']}</Text></Text>
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Tôn giáo: <Text style={{fontWeight:'400'}}>{item['TONGIAO']}</Text></Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Số ĐDCN: <Text style={{ fontWeight: '400' }}>{item['CCCD']}</Text>
+            </Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Tên cha:{' '}
+              <Text style={{ fontWeight: '400' }}>{item['TENCHA']}</Text>
+            </Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Tên mẹ: <Text style={{ fontWeight: '400' }}>{item['TENME']}</Text>
+            </Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Dân tộc:{' '}
+              <Text style={{ fontWeight: '400' }}>{item['DANTOC']}</Text>
+            </Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Tôn giáo:{' '}
+              <Text style={{ fontWeight: '400' }}>{item['TONGIAO']}</Text>
+            </Text>
             {/* <Text style={{marginRight: 10}}>Tội danh: {item['CHARGE']}</Text>
             <Text style={{marginRight: 10}}>Ngày bắt: {item['DAYARRES']}</Text>
             <Text style={{marginRight: 10}}>
@@ -159,23 +176,26 @@ export function Crime() {
             <Text style={{marginRight: 10}}>
               Nơi chấp hành: {item['DETENTION']}
             </Text> */}
-            <Text style={{ marginRight: 10,fontWeight:'bold' }}>Địa chỉ: <Text style={{fontWeight:'400'}}>{item['TODPHO']}</Text></Text>
+            <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
+              Địa chỉ:{' '}
+              <Text style={{ fontWeight: '400' }}>{item['TODPHO']}</Text>
+            </Text>
           </View>
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    // backgroundColor: 'yellow',
-                  }}
-                >
-                  <Image
-                    style={{ width: '100%', height: 200 }}
-                    source={{
-                      uri: `file://${externalDirectoryPath}/${item['CCCD']}.jpg`,
-                    }}
-                  />
-                </View>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              // backgroundColor: 'yellow',
+            }}
+          >
+            <Image
+              style={{ width: '100%', height: 200 }}
+              source={{
+                uri: `file://${externalDirectoryPath}/${item['CCCD']}.jpg`,
+              }}
+            />
+          </View>
 
           {/* {existsIMG && 
                 <View
@@ -195,7 +215,6 @@ export function Crime() {
                 </View>
               
            } */}
-
         </View>
         <View>
           {/* <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
@@ -278,7 +297,8 @@ export function Crime() {
           backgroundColor: '#0099FF',
           borderBottomWidth: 1,
           borderBottomColor: 'black',
-          paddingTop:30 + insets.top/2,
+          paddingTop: 30 + insets.top / 2,
+          height: 190 + insets.top / 2,
         }}
       >
         <View
@@ -294,7 +314,7 @@ export function Crime() {
           <View
             style={{
               flexDirection: 'column',
-              width: '80%',
+              width: '90%',
             }}
           >
             <TextInput
@@ -305,9 +325,8 @@ export function Crime() {
                 borderColor: 'black',
                 color: 'white',
                 borderWidth: 2,
-                paddingTop:5,
-                paddingBottom:5
-
+                paddingTop:10,
+                paddingBottom:10
               }}
               value={input}
               selectTextOnFocus={true}
@@ -325,9 +344,8 @@ export function Crime() {
                 color: 'white',
                 borderWidth: 2,
                 marginTop: 5,
-                paddingTop:5,
-                paddingBottom:5
-
+                paddingTop:10,
+                paddingBottom:10
               }}
               value={input2}
               selectTextOnFocus={true}
@@ -341,6 +359,7 @@ export function Crime() {
             style={{
               alignItems: 'center',
               justifyContent: 'center',
+              width: '20%',
             }}
           >
             <TouchableOpacity
@@ -390,9 +409,17 @@ export function Crime() {
           <Text style={{ fontWeight: 'bold' }}> {searchRearch.length}</Text>
         </Text>
       </View>
-      <View style={{ paddingLeft: 20, paddingRight: 20, marginBottom: 204 + 4 }}>
+      <View
+        style={{
+          paddingLeft: 20,
+          paddingRight: 20,
+          marginBottom: 190 + insets.top / 2,
+        }}
+      >
         <FlatList
-          ref={(ref)=>{global.SearchCrimeRef = ref}}
+          ref={ref => {
+            global.SearchCrimeRef = ref;
+          }}
           data={searchRearch}
           renderItem={(item, index) => (
             <Item item={item.item} index={item.index + 1} />

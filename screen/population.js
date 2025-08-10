@@ -120,7 +120,7 @@ export function Population() {
           borderBottomColor: 'color',
           backgroundColor: '#FFFF66',
           paddingTop:30 + insets.top/2,
-          height:180 + insets.top/2
+          height:190 + insets.top/2
         }}>
         <View
           style={{
@@ -136,7 +136,7 @@ export function Population() {
             style={{
               flexDirection: 'column',
               // backgroundColor:'green',
-              width: '80%',
+              width: '90%',
             }}>
             <TextInput
               style={{
@@ -145,8 +145,8 @@ export function Population() {
                 paddingLeft: 10,
                 borderColor: 'black',
                 borderWidth: 2,
-                paddingTop:5,
-                paddingBottom:5
+                paddingTop:10,
+                paddingBottom:10
               }}
               value={input}
               selectTextOnFocus={true}
@@ -162,8 +162,8 @@ export function Population() {
                 borderColor: 'black',
                 borderWidth: 2,
                 marginTop: 5,
-                paddingTop:5,
-                paddingBottom:5
+                paddingTop:10,
+                paddingBottom:10
 }}
               value={input2}
               selectTextOnFocus={true}
@@ -176,6 +176,8 @@ export function Population() {
             style={{
               alignItems: 'center',
               justifyContent: 'center',
+              // backgroundColor:'blue',
+              width:'20%',
             }}>
             <TouchableOpacity
               style={{
@@ -220,7 +222,7 @@ export function Population() {
           <Text style={{fontWeight: 'bold'}}> {searchRearch.length}</Text>
         </Text>
       </View>
-      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 180 + insets.top/2 }}>
+      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 190 + insets.top/2 }}>
         <FlatList
           // ref={()=>{FlatListToScroll}}
           ref={(ref)=>{global.SearchPopulationRef = ref}}
