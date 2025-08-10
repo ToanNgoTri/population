@@ -120,7 +120,7 @@ export function Population() {
           borderBottomColor: 'color',
           backgroundColor: '#FFFF66',
           paddingTop:30 + insets.top/2,
-          height:205
+          height:180 + insets.top/2
         }}>
         <View
           style={{
@@ -220,7 +220,7 @@ export function Population() {
           <Text style={{fontWeight: 'bold'}}> {searchRearch.length}</Text>
         </Text>
       </View>
-      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 205 }}>
+      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 180 + insets.top/2 }}>
         <FlatList
           // ref={()=>{FlatListToScroll}}
           ref={(ref)=>{global.SearchPopulationRef = ref}}
