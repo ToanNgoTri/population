@@ -136,7 +136,7 @@ export function Crime() {
               <Text style={{ fontWeight: '400' }}>{item['NAMSINH']}</Text>
             </Text>
 
-            <Text style={{ marginRight: 10 }}>
+            <Text style={{ marginRight: 10 , fontWeight: 'bold'}}>
               Giới tính:{' '}
               <Text style={{ fontWeight: '400' }}>
                 {item['GIOITINH'] == 'TRUE' ? 'Nam' : 'Nữ'}
@@ -171,7 +171,7 @@ export function Crime() {
             </Text> */}
             <Text style={{ marginRight: 10, fontWeight: 'bold' }}>
               Địa chỉ:{' '}
-              <Text style={{ fontWeight: '400' }}>{item['TODPHO']}</Text>
+              <Text style={{ fontWeight: '400' }}>{item['DIACHI']}</Text>
             </Text>
           </View>
           <View
