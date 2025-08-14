@@ -3419,9 +3419,9 @@
         "DAYARRES": "03/7/2019 (1)",
         "FREEDAY": "06/06/2025 (1)"
       },
-   {
+    {
     "SOHOK": "0",
-    "HOTEN": "Cù Nhật Đăng",
+    "HOTEN": "CÙ NHẬT ĐĂNG",
     "TENKHAC": "",
     "NAMSINH": "21/07/2006",
     "GIOITINH": "TRUE",
@@ -3439,7 +3439,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Doãn Bá Nhân",
+    "HOTEN": "DOÃN BÁ NHÂN",
     "TENKHAC": "",
     "NAMSINH": "11/06/1996",
     "GIOITINH": "TRUE",
@@ -3457,7 +3457,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Dương Quốc Sĩ",
+    "HOTEN": "DƯƠNG QUỐC SĨ",
     "TENKHAC": "",
     "NAMSINH": "20/06/1985",
     "GIOITINH": "TRUE",
@@ -3583,7 +3583,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Hồ Ngọc Hiền",
+    "HOTEN": "HỒ NGỌC HIỀN",
     "TENKHAC": "",
     "NAMSINH": "18/04/1999",
     "GIOITINH": "TRUE",
@@ -3601,7 +3601,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Kiều Minh Hòa",
+    "HOTEN": "KIỀU MINH HÒA",
     "TENKHAC": "",
     "NAMSINH": "16/06/1987",
     "GIOITINH": "TRUE",
@@ -3619,7 +3619,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Lê Ngọc Hiếu",
+    "HOTEN": "LÊ NGỌC HIẾU",
     "TENKHAC": "",
     "NAMSINH": "20/02/1999",
     "GIOITINH": "TRUE",
@@ -3691,7 +3691,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Lê Trọng Hiếu",
+    "HOTEN": "LÊ TRỌNG HIẾU",
     "TENKHAC": "",
     "NAMSINH": "20/09/1991",
     "GIOITINH": "TRUE",
@@ -3727,7 +3727,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Lê Văn Lâm",
+    "HOTEN": "LÊ VĂN LÂM",
     "TENKHAC": "",
     "NAMSINH": "22/02/1989",
     "GIOITINH": "TRUE",
@@ -3745,7 +3745,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Lê Văn Lưu\n",
+    "HOTEN": "LÊ VĂN LƯU\n",
     "TENKHAC": "",
     "NAMSINH": "03/06/1986",
     "GIOITINH": "TRUE",
@@ -3799,7 +3799,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Lương Nguyễn Văn Huy",
+    "HOTEN": "LƯƠNG NGUYỄN VĂN HUY",
     "TENKHAC": "",
     "NAMSINH": "14/07/2005",
     "GIOITINH": "TRUE",
@@ -3835,7 +3835,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Ngô Đức Trung",
+    "HOTEN": "NGÔ ĐỨC TRUNG",
     "TENKHAC": "",
     "NAMSINH": "11/04/2002",
     "GIOITINH": "TRUE",
@@ -3961,7 +3961,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Hồng Tú\n",
+    "HOTEN": "NGUYỄN HỒNG TÚ\n",
     "TENKHAC": "",
     "NAMSINH": "23/12/1988",
     "GIOITINH": "TRUE",
@@ -4015,7 +4015,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Nuôi",
+    "HOTEN": "NGUYỄN NUÔI",
     "TENKHAC": "Nguyễn Tín",
     "NAMSINH": "01/01/1972",
     "GIOITINH": "TRUE",
@@ -4105,7 +4105,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Quang Sinh",
+    "HOTEN": "NGUYỄN QUANG SINH",
     "TENKHAC": "",
     "NAMSINH": "01/01/1996",
     "GIOITINH": "TRUE",
@@ -4123,7 +4123,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Quang Tuấn",
+    "HOTEN": "NGUYỄN QUANG TUẤN",
     "TENKHAC": "Cu",
     "NAMSINH": "06/09/1995",
     "GIOITINH": "TRUE",
@@ -4141,7 +4141,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Quốc Cường",
+    "HOTEN": "NGUYỄN QUỐC CƯỜNG",
     "TENKHAC": "",
     "NAMSINH": "04/06/1984",
     "GIOITINH": "TRUE",
@@ -4177,7 +4177,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Thành Hiền",
+    "HOTEN": "NGUYỄN THÀNH HIỀN",
     "TENKHAC": "",
     "NAMSINH": "06/01/1987",
     "GIOITINH": "TRUE",
@@ -4267,7 +4267,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Thị Minh Phượng",
+    "HOTEN": "NGUYỄN THỊ MINH PHƯỢNG",
     "TENKHAC": "",
     "NAMSINH": "07/01/1990",
     "GIOITINH": "FALSE",
@@ -4285,7 +4285,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Văn Hạnh",
+    "HOTEN": "NGUYỄN VĂN HẠNH",
     "TENKHAC": "",
     "NAMSINH": "12/12/1984",
     "GIOITINH": "TRUE",
@@ -4303,7 +4303,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Văn Mẫn",
+    "HOTEN": "NGUYỄN VĂN MẪN",
     "TENKHAC": "",
     "NAMSINH": "23/09/1996",
     "GIOITINH": "TRUE",
@@ -4321,7 +4321,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Nguyễn Văn Tâm",
+    "HOTEN": "NGUYỄN VĂN TÂM",
     "TENKHAC": "",
     "NAMSINH": "23/06/1984",
     "GIOITINH": "TRUE",
@@ -4375,7 +4375,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Phạm Quốc Anh",
+    "HOTEN": "PHẠM QUỐC ANH",
     "TENKHAC": "",
     "NAMSINH": "01/04/1994",
     "GIOITINH": "TRUE",
@@ -4393,7 +4393,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Sẩm Duy Tâm",
+    "HOTEN": "SẨM DUY TÂM",
     "TENKHAC": "",
     "NAMSINH": "22/01/2005",
     "GIOITINH": "TRUE",
@@ -4411,7 +4411,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Trần Bình Trọng",
+    "HOTEN": "TRẦN BÌNH TRỌNG",
     "TENKHAC": "",
     "NAMSINH": "25/05/2000",
     "GIOITINH": "TRUE",
@@ -4429,7 +4429,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Trần Đình Thụy\n",
+    "HOTEN": "TRẦN ĐÌNH THỤY\n",
     "TENKHAC": "VŨ",
     "NAMSINH": "14/08/1986",
     "GIOITINH": "TRUE",
@@ -4465,7 +4465,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Trần Thị Ngọc Bích",
+    "HOTEN": "TRẦN THỊ NGỌC BÍCH",
     "TENKHAC": "",
     "NAMSINH": "30/07/1993",
     "GIOITINH": "FALSE",
@@ -4483,7 +4483,7 @@
   },
   {
     "SOHOK": "0",
-    "HOTEN": "Trần Văn Hoàng",
+    "HOTEN": "TRẦN VĂN HOÀNG",
     "TENKHAC": "",
     "NAMSINH": "12/08/2000",
     "GIOITINH": "TRUE",
@@ -4553,5 +4553,4 @@
     "DAYARRES": "22/07/2021",
     "FREEDAY": "01/09/2022"
   }
-  
   ]

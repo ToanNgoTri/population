@@ -89,13 +89,17 @@ export function Crime() {
     //         if(exists){
     //           existsIMG = exists
     //           URIImage = `file://${externalDirectoryPath}/${item['CCCD']}.jpg`
-    //         }else{
+    //         }else{					./gradlew assembleRelease 
+
     //           existsIMG = exists
     //         }
     //         console.log('existsIMG',existsIMG);
 
     //       })
 
+  // console.log("item['CCCD']",item['CCCD']);
+  
+    
     return (
       <View
         style={{
