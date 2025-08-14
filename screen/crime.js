@@ -60,14 +60,11 @@ export function Crime() {
   ];
   let widthArr = ['8%', '30%', '15%', '15%', '15%', '17%'];
   function Item({ item, index }) {
-    // console.log(item['CHARGE'].split(";"));
 
     let chargeArr = item['CHARGE'].split(';');
     let fullInfoCrime = [];
-    // console.log('chargeArr', chargeArr);
 
     for (let a = 0; a < chargeArr.length; a++) {
-      // console.log("item['CHARGE'].split()[a]", item['FREEDAY'].split(';')[a]);
 
       fullInfoCrime.push([
         [a + 1],
@@ -77,29 +74,9 @@ export function Crime() {
         item['FREEDAY'].split(';')[a] ? item['FREEDAY'].split(';')[a] : '',
         item['DETENTION'].split(';')[a] ? item['DETENTION'].split(';')[a] : '',
       ]);
-      // console.log('fullInfoCrime1', fullInfoCrime);
     }
 
-    // let URIImage = ''
-    // let existsIMG;
-    // RNFS.exists(
-    //         `file://${externalDirectoryPath}/${item['CCCD']}.jpg`,
-    //       ).then(exists => {
-    //         console.log('exists', exists);
-    //         if(exists){
-    //           existsIMG = exists
-    //           URIImage = `file://${externalDirectoryPath}/${item['CCCD']}.jpg`
-    //         }else{					./gradlew assembleRelease 
 
-    //           existsIMG = exists
-    //         }
-    //         console.log('existsIMG',existsIMG);
-
-    //       })
-
-  // console.log("item['CCCD']",item['CCCD']);
-  
-    
     return (
       <View
         style={{
