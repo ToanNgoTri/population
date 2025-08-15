@@ -2694,10 +2694,10 @@
       "TENCHA": "THÂN VĂN QUÝ",
       "TENME": "TRƯƠNG THỊ KIM DUNG",
       "CHARGE": "SDMT (1); Tàng trữ trái phép chất ma túy (2)",
-      "JUDGMENT": "01 năm 03 tháng (2)",
-      "DETENTION": "TG HUY KHIÊM (2)",
-      "DAYARRES": "09/4/2024 (2)",
-      "FREEDAY": "28/5/2025 (2)"
+      "JUDGMENT": "; 01 năm 03 tháng (2)",
+      "DETENTION": "; TG HUY KHIÊM (2)",
+      "DAYARRES": "; 09/4/2024 (2)",
+      "FREEDAY": "; 28/5/2025 (2)"
     },
     {
       "SOHOK": "000508",
