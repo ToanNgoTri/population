@@ -1,4 +1,5 @@
-import React, {useState, useRef, useEffect,useContext} from 'react';
+import SelectDropdown from 'react-native-select-dropdown';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import {
   Text,
   TextInput,
@@ -6,15 +7,18 @@ import {
   TouchableOpacity,
   FlatList,
   Keyboard,
+  StyleSheet,
 } from 'react-native';
 import population from '../asset/population.json';
-import {useNavigation, useScrollToTop} from '@react-navigation/native';
+import { useNavigation, useScrollToTop } from '@react-navigation/native';
 import RNFS from 'react-native-fs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export function Population() {
   const [input, setInput] = useState('');
+  // const [numberInput, setNumberInput] = useState(1);
   const [input2, setInput2] = useState('');
+  const [input3, setInput3] = useState('');
 
   const [searchRearch, setSearchRearch] = useState([]);
   const navigation = useNavigation();
@@ -25,7 +29,7 @@ export function Population() {
   const externalDirectoryPath = `${RNFS.ExternalDirectoryPath}`;
   const insets = useSafeAreaInsets(); // lất chiều cao để manu top iphone
 
-    // const HomeScreen = useContext(RefOfHome);
+  // const HomeScreen = useContext(RefOfHome);
 
   let data = population;
   useEffect(() => {
@@ -40,14 +44,12 @@ export function Population() {
     //     data = population;
     //   }
     // });
-
     //     if (ScrollViewToScroll.current) {
     //   HomeScreen.updateHomeRef(ScrollViewToScroll.current);
     // }
+  }, []);
 
-  },[]);
-
-  function Item({item, index}) {
+  function Item({ item, index }) {
     return (
       <View
         style={{
@@ -59,7 +61,8 @@ export function Population() {
           borderWidth: 2,
           borderColor: 'black',
           borderRadius: 5,
-        }}>
+        }}
+      >
         <View>
           <Text>STT: {index}</Text>
         </View>
@@ -71,23 +74,25 @@ export function Population() {
               // data:data
             })
           }
-          style={{width: '100%'}}>
-          <Text style={{marginRight: 10}}>Số HSHK: {item['SOHOK']}</Text>
-          <Text style={{marginRight: 10}}>
-            Họ và tên: <Text style={{fontWeight: 'bold'}}>{item['HOTEN']}</Text>
+          style={{ width: '100%' }}
+        >
+          <Text style={{ marginRight: 10 }}>Số HSHK: {item['SOHOK']}</Text>
+          <Text style={{ marginRight: 10 }}>
+            Họ và tên:{' '}
+            <Text style={{ fontWeight: 'bold' }}>{item['HOTEN']}</Text>
           </Text>
 
-          <Text style={{marginRight: 10}}>Ngày sinh: {item['NAMSINH']}</Text>
+          <Text style={{ marginRight: 10 }}>Ngày sinh: {item['NAMSINH']}</Text>
 
-          <Text style={{marginRight: 10}}>
+          <Text style={{ marginRight: 10 }}>
             Giới tính: {item['GIOITINH'] == 'TRUE' ? 'Nam' : 'Nữ'}
           </Text>
-          <Text style={{marginRight: 10}}>Tên cha: {item['TENCHA']}</Text>
-          <Text style={{marginRight: 10}}>Tên mẹ: {item['TENME']}</Text>
-          <Text style={{marginRight: 10}}>Dân tộc: {item['DANTOC']}</Text>
-          <Text style={{marginRight: 10}}>Tôn giáo: {item['TONGIAO']}</Text>
-          <Text style={{marginRight: 10}}>Số ĐDCN: {item['CCCD']}</Text>
-          <Text style={{marginRight: 10}}>Địa chỉ: {item['NOITHTRU']}</Text>
+          <Text style={{ marginRight: 10 }}>Tên cha: {item['TENCHA']}</Text>
+          <Text style={{ marginRight: 10 }}>Tên mẹ: {item['TENME']}</Text>
+          <Text style={{ marginRight: 10 }}>Dân tộc: {item['DANTOC']}</Text>
+          <Text style={{ marginRight: 10 }}>Tôn giáo: {item['TONGIAO']}</Text>
+          <Text style={{ marginRight: 10 }}>Số ĐDCN: {item['CCCD']}</Text>
+          <Text style={{ marginRight: 10 }}>Địa chỉ: {item['NOITHTRU']}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -99,10 +104,12 @@ export function Population() {
     let dataDemoSearch = [];
     if (data) {
       for (let a = 0; a <= data.length; a++) {
+        // console.log("data[a].titleFilter1",data[a][titleFilter1]);
         if (
           data[a] &&
-          data[a]['HOTEN'].match(new RegExp(input, 'img')) &&
-          data[a]['HOTEN'].match(new RegExp(input2, 'img'))
+          data[a][titleFilter1].match(new RegExp(input, 'img')) &&
+          data[a][titleFilter2].match(new RegExp(input2, 'img')) &&
+          data[a][titleFilter3].match(new RegExp(input3, 'img'))
         ) {
           dataDemoSearch.push(data[a]);
         }
@@ -110,6 +117,34 @@ export function Population() {
       setSearchRearch(dataDemoSearch);
     }
   }
+
+  const title = [
+    'HOTEN',
+    'HO',
+    'TEN',
+    'SOHOK',
+    'QUANHE',
+    'NAMSINH',
+    'GIOITINH',
+    'DANTOC',
+    'TONGIAO',
+    'CCCD',
+    'NOITHTRU',
+    'TENCHA',
+    'TENME',
+  ];
+
+  let titelForDropdown = [];
+
+  const [titleFilter1, setTitleFilter1] = useState('HOTEN');
+  const [titleFilter2, setTitleFilter2] = useState('HOTEN');
+  const [titleFilter3, setTitleFilter3] = useState('HOTEN');
+
+  useEffect(() => {
+    console.log('titleFilter1', titleFilter1);
+    console.log('titleFilter2', titleFilter2);
+    console.log('titleFilter3', titleFilter3);
+  }, [titleFilter1, titleFilter2, titleFilter3]);
 
   return (
     <>
@@ -120,42 +155,271 @@ export function Population() {
           backgroundColor: '#008080',
           borderBottomWidth: 1,
           borderBottomColor: 'black',
-          paddingTop:20 + insets.top/2,
-          height:190 + insets.top/2
-        }}>
+          // paddingTop: 20 + insets.top / 2,
+          height: 190 + insets.top / 2,
+        }}
+      >
         <View
           style={{
             marginTop: 10,
             marginBottom: 10,
-            width: '80%',
+            width: '100%',
             borderRadius: 10,
             flexDirection: 'row',
             // backgroundColor:'red',
             justifyContent: 'space-between',
-          }}>
+            paddingLeft: 10,
+            paddingRight: 10,
+          }}
+        >
           <View
             style={{
               flexDirection: 'column',
               // backgroundColor:'green',
               width: '90%',
-            }}>
-            <TextInput
+            }}
+          >
+            <View
               style={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                paddingLeft: 10,
-                borderColor: 'black',
-                borderWidth: 2,
-                paddingTop:10,
-                paddingBottom:10
+                flexDirection: 'row',
+                // backgroundColor: 'blue',
+                display: 'flex',
               }}
-              value={input}
-              selectTextOnFocus={true}
-              onChangeText={text => setInput(text)}
-              placeholder="Nhập từ khóa..."
-              placeholderTextColor={'gray'}
-              onSubmitEditing={() => pushToSearch()}></TextInput>
-            <TextInput
+            >
+              <View
+                style={{
+                  position: 'relative',
+                  width: '25%',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 5,
+                  paddingRight: 5,
+                }}
+              >
+                <SelectDropdown
+                  data={title.filter(
+                    item =>
+                      item != titleFilter1 ||
+                      item != titleFilter2 ||
+                      item != titleFilter3,
+                  )}
+                  onSelect={(selectedItem, index) => {
+                    console.log(selectedItem, index);
+
+                    setTitleFilter1(selectedItem);
+                  }}
+                  renderButton={(selectedItem, isOpened) => {
+                    return (
+                      <View style={styles.dropdownButtonStyle}>
+                        <Text style={styles.dropdownButtonTxtStyle}>
+                          {titleFilter1 + '\u25BC'}
+                        </Text>
+                      </View>
+                    );
+                  }}
+                  renderItem={(item, index, isSelected) => {
+                    return (
+                      <View
+                        style={{
+                          ...styles.dropdownItemStyle,
+                          ...(isSelected && { backgroundColor: '#D2D9DF' }),
+                        }}
+                      >
+                        {/* <Icon name={item.icon} style={styles.dropdownItemIconStyle} /> */}
+                        <Text style={styles.dropdownItemTxtStyle}>{item}</Text>
+                      </View>
+                    );
+                  }}
+                  showsVerticalScrollIndicator={false}
+                  dropdownStyle={styles.dropdownMenuStyle}
+                />
+              </View>
+
+              <TextInput
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: 10,
+                  paddingLeft: 10,
+                  borderColor: 'black',
+                  borderWidth: 2,
+                  // paddingTop: 10,
+                  // paddingBottom: 10,
+                  display: 'flex',
+                  flex: 1,
+                  height: 36,
+                  fontSize: 13,
+                  lineHeight: 10,
+                }}
+                value={input}
+                selectTextOnFocus={true}
+                onChangeText={text => setInput(text)}
+                placeholder="Nhập từ khóa..."
+                placeholderTextColor={'gray'}
+                onSubmitEditing={() => pushToSearch()}
+              ></TextInput>
+            </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                // backgroundColor: 'blue',
+                display: 'flex',
+              }}
+            >
+              <View
+                style={{
+                  position: 'relative',
+                  width: '25%',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 5,
+                  paddingRight: 5,
+                }}
+              >
+                <SelectDropdown
+                  data={title.filter(
+                    item =>
+                      item != titleFilter1 ||
+                      item != titleFilter2 ||
+                      item != titleFilter3,
+                  )}
+                  onSelect={(selectedItem, index) => {
+                    console.log(selectedItem, index);
+
+                    setTitleFilter2(selectedItem);
+                  }}
+                  renderButton={(selectedItem, isOpened) => {
+                    return (
+                      <View style={styles.dropdownButtonStyle}>
+                        <Text style={styles.dropdownButtonTxtStyle}>
+                          {titleFilter2 + '\u25BC'}
+                        </Text>
+                      </View>
+                    );
+                  }}
+                  renderItem={(item, index, isSelected) => {
+                    return (
+                      <View
+                        style={{
+                          ...styles.dropdownItemStyle,
+                          ...(isSelected && { backgroundColor: '#D2D9DF' }),
+                        }}
+                      >
+                        {/* <Icon name={item.icon} style={styles.dropdownItemIconStyle} /> */}
+                        <Text style={styles.dropdownItemTxtStyle}>{item}</Text>
+                      </View>
+                    );
+                  }}
+                  showsVerticalScrollIndicator={false}
+                  dropdownStyle={styles.dropdownMenuStyle}
+                />
+              </View>
+
+              <TextInput
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: 10,
+                  paddingLeft: 10,
+                  borderColor: 'black',
+                  borderWidth: 2,
+                  // paddingTop: 10,
+                  // paddingBottom: 10,
+                  display: 'flex',
+                  flex: 1,
+                  height: 36,
+                  fontSize: 13,
+                  lineHeight: 10,
+                }}
+                value={input2}
+                selectTextOnFocus={true}
+                onChangeText={text => setInput2(text)}
+                placeholder="Nhập từ khóa..."
+                placeholderTextColor={'gray'}
+                onSubmitEditing={() => pushToSearch()}
+              ></TextInput>
+            </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                // backgroundColor: 'blue',
+                display: 'flex',
+              }}
+            >
+              <View
+                style={{
+                  position: 'relative',
+                  width: '25%',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 5,
+                  paddingRight: 5,
+                }}
+              >
+                <SelectDropdown
+                  data={title.filter(
+                    item =>
+                      item != titleFilter1 &&
+                      item != titleFilter2 &&
+                      item != titleFilter3,
+                  )}
+                  onSelect={(selectedItem, index) => {
+                    console.log(selectedItem, index);
+
+                    setTitleFilter3(selectedItem);
+                  }}
+                  renderButton={(selectedItem, isOpened) => {
+                    return (
+                      <View style={styles.dropdownButtonStyle}>
+                        <Text style={styles.dropdownButtonTxtStyle}>
+                          {titleFilter3 + '\u25BC'}
+                        </Text>
+                      </View>
+                    );
+                  }}
+                  renderItem={(item, index, isSelected) => {
+                    return (
+                      <View
+                        style={{
+                          ...styles.dropdownItemStyle,
+                          ...(isSelected && { backgroundColor: '#D2D9DF' }),
+                        }}
+                      >
+                        {/* <Icon name={item.icon} style={styles.dropdownItemIconStyle} /> */}
+                        <Text style={styles.dropdownItemTxtStyle}>{item}</Text>
+                      </View>
+                    );
+                  }}
+                  showsVerticalScrollIndicator={false}
+                  dropdownStyle={styles.dropdownMenuStyle}
+                />
+              </View>
+
+              <TextInput
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: 10,
+                  paddingLeft: 10,
+                  borderColor: 'black',
+                  borderWidth: 2,
+                  // paddingTop: 10,
+                  // paddingBottom: 10,
+                  display: 'flex',
+                  flex: 1,
+                  height: 36,
+                  fontSize: 13,
+                  lineHeight: 10,
+                }}
+                value={input3}
+                selectTextOnFocus={true}
+                onChangeText={text => setInput3(text)}
+                placeholder="Nhập từ khóa..."
+                placeholderTextColor={'gray'}
+                onSubmitEditing={() => pushToSearch()}
+              ></TextInput>
+            </View>
+
+            {/* <TextInput
               style={{
                 backgroundColor: 'white',
                 borderRadius: 10,
@@ -171,35 +435,40 @@ export function Population() {
               onChangeText={text => setInput2(text)}
               placeholder="Nhập từ khóa..."
               placeholderTextColor={'gray'}
-              onSubmitEditing={() => pushToSearch()}></TextInput>
+              onSubmitEditing={() => pushToSearch()}></TextInput> */}
           </View>
           <View
             style={{
               alignItems: 'center',
               justifyContent: 'center',
               // backgroundColor:'blue',
-              width:'20%',
-            }}>
+              width: '10%',
+            }}
+          >
             <TouchableOpacity
               style={{
                 padding: 5,
-              width:30,
-              height:30,
-              backgroundColor:'red',
+                width: 30,
+                height: 30,
+                backgroundColor: 'red',
                 borderRadius: 4,
                 borderWidth: 1,
               }}
               onPress={() => {
                 setInput('');
                 setInput2('');
-              }}>
+                setInput3('');
+              }}
+            >
               <Text
-              style={{
-              textAlign:'center',
-              color:'white',
-              fontWeight:'bold'
-}}
-              >X</Text>
+                style={{
+                  textAlign: 'center',
+                  color: 'white',
+                  fontWeight: 'bold',
+                }}
+              >
+                X
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -215,39 +484,92 @@ export function Population() {
             borderColor: 'black',
             borderWidth: 2,
             color: 'black',
-          }}>
-          <Text style={{color: 'white', fontWeight: 'bold'}}>Search</Text>
+          }}
+        >
+          <Text style={{ color: 'white', fontWeight: 'bold' }}>Search</Text>
         </TouchableOpacity>
-        <Text style={{paddingTop: 5, marginBottom: 5,color:'white'}}>
+        <Text style={{ paddingTop: 5, marginBottom: 5, color: 'white' }}>
           Số lượng kết quả tìm thấy:
-          <Text style={{fontWeight: 'bold'}}> {searchRearch.length}</Text>
+          <Text style={{ fontWeight: 'bold' }}> {searchRearch.length}</Text>
         </Text>
       </View>
-      <View style={{paddingLeft: 20, paddingRight: 20, marginBottom: 190 + insets.top/2 }}>
-      { searchRearch.length?
-      (<FlatList
-          // ref={()=>{FlatListToScroll}}
-          ref={(ref)=>{global.SearchPopulationRef = ref}}
-
-          data={searchRearch}
-          renderItem={(item, index) => (
-            <Item item={item.item} index={item.index + 1} />
-          )}
-        />
-   ):
-    (<TouchableOpacity
-    style={{
-      height:'100%',
-      width:'100%',
-      // backgroundColor:'red'
-    }}
-        onPress={() => Keyboard.dismiss()}
-    >
-    </TouchableOpacity>)
-    }
-          </View>
+      <View
+        style={{
+          paddingLeft: 20,
+          paddingRight: 20,
+          marginBottom: 190 + insets.top / 2,
+        }}
+      >
+        {searchRearch.length ? (
+          <FlatList
+            // ref={()=>{FlatListToScroll}}
+            ref={ref => {
+              global.SearchPopulationRef = ref;
+            }}
+            data={searchRearch}
+            renderItem={(item, index) => (
+              <Item item={item.item} index={item.index + 1} />
+            )}
+          />
+        ) : (
+          <TouchableOpacity
+            style={{
+              height: '100%',
+              width: '100%',
+              // backgroundColor:'red'
+            }}
+            onPress={() => Keyboard.dismiss()}
+          ></TouchableOpacity>
+        )}
+      </View>
       <Text></Text>
-
-       </>  
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  dropdownButtonStyle: {
+    width: '100%',
+    height: 20,
+    backgroundColor: '#E9ECEF',
+    borderRadius: 12,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    textAlign: 'center',
+    paddingHorizontal:0,
+    paddingVertical:0
+  },
+  dropdownButtonTxtStyle: {
+    flex: 1,
+    fontSize: 9,
+    fontWeight: '500',
+    color: '#151E26',
+    textAlign: 'center',
+    // backgroundColor:'red',
+    // display:'flex',
+    // flex:1,
+    // width:'120%',
+  },
+  dropdownMenuStyle: {
+    backgroundColor: '#E9ECEF',
+    borderRadius: 8,
+  },
+  dropdownItemStyle: {
+    width: '100%',
+    flexDirection: 'row',
+    paddingHorizontal: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 5,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+  },
+  dropdownItemTxtStyle: {
+    flex: 1,
+    fontSize: 11,
+    fontWeight: '500',
+    color: '#151E26',
+  },
+});

@@ -26,11 +26,12 @@ export function AppNavigators() {
         return (
           <View
             style={{
-              backgroundColor: '#FFCCCC',
+              backgroundColor: '#0aec28ff',
               bottom: 0,
               height: 45 + insets.bottom / 2,
               width: '100%',
               flexDirection: 'row',
+              borderTopWidth:1
             }}
           >
             <View
@@ -66,7 +67,7 @@ export function AppNavigators() {
                     justifyContent: 'center',
                     textAlign: 'center',
                     bottom: insets.bottom / 7 + 2,
-                    color: state.index == 0 ? '#006600' : '#808080',
+                    color: state.index == 0 ? '#e60000ff' : '#0ab438ff',
                     fontSize: 18,
                     fontWeight: 'bold',
                   }}
@@ -106,7 +107,7 @@ export function AppNavigators() {
                     justifyContent: 'center',
                     textAlign: 'center',
                     bottom: insets.bottom / 7 + 2,
-                    color: state.index == 1 ? '#006600' : '#808080',
+                    color: state.index == 1 ? '#e60000ff' : '#0ab438ff',
                     fontSize: 18,
                     fontWeight: 'bold',
                   }}
