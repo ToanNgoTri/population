@@ -16,7 +16,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export function Population() {
   const [input, setInput] = useState('');
-  // const [numberInput, setNumberInput] = useState(1);
   const [input2, setInput2] = useState('');
   const [input3, setInput3] = useState('');
 
@@ -85,7 +84,7 @@ export function Population() {
           <Text style={{ marginRight: 10 }}>Ngày sinh: {item['NAMSINH']}</Text>
 
           <Text style={{ marginRight: 10 }}>
-            Giới tính: {item['GIOITINH'] == 'TRUE' ? 'Nam' : 'Nữ'}
+            Giới tính: {item['GIOITINH']}
           </Text>
           <Text style={{ marginRight: 10 }}>Tên cha: {item['TENCHA']}</Text>
           <Text style={{ marginRight: 10 }}>Tên mẹ: {item['TENME']}</Text>
@@ -120,8 +119,6 @@ export function Population() {
 
   const title = [
     'HOTEN',
-    'HO',
-    'TEN',
     'SOHOK',
     'QUANHE',
     'NAMSINH',
@@ -155,14 +152,14 @@ export function Population() {
           backgroundColor: '#008080',
           borderBottomWidth: 1,
           borderBottomColor: 'black',
-          // paddingTop: 20 + insets.top / 2,
-          height: 190 + insets.top / 2,
+          height: 170 + insets.top ,
+          paddingTop:insets.top
         }}
       >
         <View
           style={{
             marginTop: 10,
-            marginBottom: 10,
+            marginBottom: 5,
             width: '100%',
             borderRadius: 10,
             flexDirection: 'row',
@@ -197,12 +194,7 @@ export function Population() {
                 }}
               >
                 <SelectDropdown
-                  data={title.filter(
-                    item =>
-                      item != titleFilter1 ||
-                      item != titleFilter2 ||
-                      item != titleFilter3,
-                  )}
+                  data={title}
                   onSelect={(selectedItem, index) => {
                     console.log(selectedItem, index);
 
@@ -246,9 +238,9 @@ export function Population() {
                   // paddingBottom: 10,
                   display: 'flex',
                   flex: 1,
-                  height: 36,
+                  height: 39,
                   fontSize: 13,
-                  lineHeight: 10,
+                  lineHeight: 11,
                 }}
                 value={input}
                 selectTextOnFocus={true}
@@ -277,12 +269,7 @@ export function Population() {
                 }}
               >
                 <SelectDropdown
-                  data={title.filter(
-                    item =>
-                      item != titleFilter1 ||
-                      item != titleFilter2 ||
-                      item != titleFilter3,
-                  )}
+                  data={title}
                   onSelect={(selectedItem, index) => {
                     console.log(selectedItem, index);
 
@@ -326,9 +313,9 @@ export function Population() {
                   // paddingBottom: 10,
                   display: 'flex',
                   flex: 1,
-                  height: 36,
+                  height: 39,
                   fontSize: 13,
-                  lineHeight: 10,
+                  lineHeight: 11,
                 }}
                 value={input2}
                 selectTextOnFocus={true}
@@ -357,12 +344,7 @@ export function Population() {
                 }}
               >
                 <SelectDropdown
-                  data={title.filter(
-                    item =>
-                      item != titleFilter1 &&
-                      item != titleFilter2 &&
-                      item != titleFilter3,
-                  )}
+                  data={title}
                   onSelect={(selectedItem, index) => {
                     console.log(selectedItem, index);
 
@@ -406,9 +388,9 @@ export function Population() {
                   // paddingBottom: 10,
                   display: 'flex',
                   flex: 1,
-                  height: 36,
+                  height: 39,
                   fontSize: 13,
-                  lineHeight: 10,
+                  lineHeight: 11,
                 }}
                 value={input3}
                 selectTextOnFocus={true}
@@ -418,46 +400,34 @@ export function Population() {
                 onSubmitEditing={() => pushToSearch()}
               ></TextInput>
             </View>
-
-            {/* <TextInput
-              style={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                paddingLeft: 10,
-                borderColor: 'black',
-                borderWidth: 2,
-                marginTop: 5,
-                paddingTop:10,
-                paddingBottom:10
-}}
-              value={input2}
-              selectTextOnFocus={true}
-              onChangeText={text => setInput2(text)}
-              placeholder="Nhập từ khóa..."
-              placeholderTextColor={'gray'}
-              onSubmitEditing={() => pushToSearch()}></TextInput> */}
           </View>
           <View
             style={{
               alignItems: 'center',
               justifyContent: 'center',
-              // backgroundColor:'blue',
+              // backgroundColor: 'blue',
               width: '10%',
+              position: 'relative',
             }}
           >
             <TouchableOpacity
               style={{
                 padding: 5,
                 width: 30,
-                height: 30,
+                height: 39 * 3,
                 backgroundColor: 'red',
                 borderRadius: 4,
-                borderWidth: 1,
+                borderWidth: 2,
+                justifyContent: 'center',
+                borderRadius: 10,
               }}
               onPress={() => {
                 setInput('');
                 setInput2('');
                 setInput3('');
+                setTitleFilter1('HOTEN')
+                setTitleFilter2('HOTEN')
+                setTitleFilter3('HOTEN')
               }}
             >
               <Text
@@ -472,32 +442,42 @@ export function Population() {
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity
-          onPress={() => pushToSearch()}
+        <View
           style={{
-            width: 80,
-            height: 30,
-            backgroundColor: 'gray',
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 10,
-            borderColor: 'black',
-            borderWidth: 2,
-            color: 'black',
+            flexDirection: 'row',
+            display: 'flex',
+            justifyContent:'space-evenly',
+            width: '100%',
           }}
         >
-          <Text style={{ color: 'white', fontWeight: 'bold' }}>Search</Text>
-        </TouchableOpacity>
-        <Text style={{ paddingTop: 5, marginBottom: 5, color: 'white' }}>
-          Số lượng kết quả tìm thấy:
-          <Text style={{ fontWeight: 'bold' }}> {searchRearch.length}</Text>
-        </Text>
+          <Text style={{ lineHeight: 30, color: 'white', fontSize: 14 }}>
+            Số lượng kết quả:
+            <Text style={{ fontWeight: 'bold' }}> {searchRearch.length}</Text>
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => pushToSearch()}
+            style={{
+              width: 80,
+              height: 30,
+              backgroundColor: 'gray',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 10,
+              borderColor: 'black',
+              borderWidth: 2,
+              color: 'black',
+            }}
+          >
+            <Text style={{ color: 'white', fontWeight: 'bold' }}>Search</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View
         style={{
           paddingLeft: 20,
           paddingRight: 20,
-          marginBottom: 190 + insets.top / 2,
+          marginBottom: 170 + insets.top,
         }}
       >
         {searchRearch.length ? (
@@ -538,8 +518,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 12,
     textAlign: 'center',
-    paddingHorizontal:0,
-    paddingVertical:0
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
   dropdownButtonTxtStyle: {
     flex: 1,
