@@ -201,7 +201,7 @@ export function Crime() {
     'DANTOC',
     'TONGIAO',
     'CCCD',
-    'NOITHTRU',
+    'DIACHI',
     'TENCHA',
     'TENME',
     'CHARGE',
